@@ -7,9 +7,7 @@ Vue.use(Router)
 import Layout from '@/layout'
 
 /* Router Modules */
-import humenRouter from './modules/human'
-import systemRouter from './modules/system'
-import personalRouter from './modules/personal'
+
 /**
  * Note: sub-menu only appear when route children.length >= 1
  * Detail see: https://panjiachen.github.io/vue-element-admin-site/guide/essentials/router-and-nav.html
@@ -104,9 +102,212 @@ export const constantRoutes = [
 export const asyncRoutes = [
 
   /** when your routing map is too long, you can split it into small modules **/
-  personalRouter,
-  humenRouter,
-  systemRouter,
+  {
+    path: '/personal',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'personalResource',
+    meta: {
+      title: '个人信息',
+      icon: 'personal'
+    },
+    children: [
+      {
+        path: 'base',
+        component: () => import('@/views/permission/page'),
+        name: 'employee',
+        meta: { title: '基本信息' }
+      },
+      {
+        path: 'performance',
+        component: () => import('@/views/charts/mix-chart'),
+        name: 'performance',
+        meta: { title: '工作绩效' }
+      }
+    ]
+  },
+  {
+    path: '/human',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'humanResource',
+    meta: {
+      title: '人力管理',
+      icon: 'user',
+      roles: ["admin"]
+    },
+    children: [
+      {
+        path: 'performance',
+        component: () => import('@/views/charts/mix-chart'),
+        name: 'performance',
+        meta: {
+          title: '绩效管理',
+          roles: ["admin"]
+        }
+      },
+      {
+        path: 'attendance',
+        component: () => import('@/views/charts/mix-chart'),
+        name: 'attendance',
+        meta: {
+          title: '考勤管理',
+          roles: ["admin"]
+        }
+      }
+    ]
+  },
+  {
+    path: '/organization',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'organizationResource',
+    meta: {
+      title: '机构管理',
+      icon: 'organization'
+    },
+    children: [
+      {
+        path: 'user',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'user',
+        meta: { title: '用户管理', noCache: true }
+      },
+      {
+        path: 'department',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'department',
+        meta: { title: '部门管理', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/office',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'officeResource',
+    meta: {
+      title: '行政管理',
+      icon: 'office'
+    },
+    children: [
+      {
+        path: 'notice',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'notice',
+        meta: { title: '公告管理', noCache: true }
+      },
+      {
+        path: 'news',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'news',
+        meta: { title: '新闻管理', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/project',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'projectResource',
+    meta: {
+      title: '项目管理',
+      icon: 'project'
+    },
+    children: [
+      {
+        path: 'program',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'program',
+        meta: { title: '项目列表', noCache: true }
+      },
+      {
+        path: 'model',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'model',
+        meta: { title: '项目模板', noCache: true }
+      },
+      {
+        path: 'detail',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'detail',
+        meta: { title: '新闻管理', noCache: true },
+        hidden: true
+      }
+    ]
+  },
+  {
+    path: '/analysis',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'analysisResource',
+    meta: {
+      title: '数据统计',
+      icon: 'analysis'
+    },
+    children: [
+      {
+        path: 'user',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'user',
+        meta: { title: '员工数据', noCache: true }
+      },
+      {
+        path: 'statistics',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'statistics',
+        meta: { title: '数据统计', noCache: true }
+      },
+      {
+        path: 'echart',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'echart',
+        meta: { title: '图表分析', noCache: true }
+      }
+    ]
+  },
+  {
+    path: '/system',
+    component: Layout,
+    redirect: 'noRedirect',
+    name: 'systemResource',
+    meta: {
+      title: '系统管理',
+      icon: 'config'
+    },
+    children: [
+      {
+        path: 'menu',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'menu',
+        meta: { title: '菜单管理', noCache: true }
+      },
+      {
+        path: 'role',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'role',
+        meta: { title: '角色管理', noCache: true }
+      },
+      {
+        path: 'permission',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'permission',
+        meta: { title: '权限管理', noCache: true }
+      },
+      {
+        path: 'log',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'log',
+        meta: { title: '日志管理', noCache: true }
+      },
+      {
+        path: 'monitor',
+        component: () => import('@/views/charts/keyboard'),
+        name: 'monitor',
+        meta: { title: '系统安全', noCache: true }
+      }
+    ]
+  },
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
