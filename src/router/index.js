@@ -88,8 +88,8 @@ export const constantRoutes = [
       {
         path: 'index',
         component: () => import('@/views/profile/index'),
-        name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
+        name: 'profile',
+        meta: { title: '我的信息', icon: 'user', noCache: true }
       }
     ]
   }
@@ -108,15 +108,15 @@ export const asyncRoutes = [
     redirect: 'noRedirect',
     name: 'personalResource',
     meta: {
-      title: '个人信息',
+      title: '个人主页',
       icon: 'personal'
     },
     children: [
       {
         path: 'base',
-        component: () => import('@/views/permission/page'),
+        component: () => import('@/views/profile/index'),
         name: 'employee',
-        meta: { title: '基本信息' }
+        meta: { title: '我的信息' }
       },
       {
         path: 'performance',
@@ -134,7 +134,7 @@ export const asyncRoutes = [
     meta: {
       title: '人力管理',
       icon: 'user',
-      roles: ["admin"]
+      roles: ['admin']
     },
     children: [
       {
@@ -143,7 +143,7 @@ export const asyncRoutes = [
         name: 'performance',
         meta: {
           title: '绩效管理',
-          roles: ["admin"]
+          roles: ['admin']
         }
       },
       {
@@ -152,7 +152,7 @@ export const asyncRoutes = [
         name: 'attendance',
         meta: {
           title: '考勤管理',
-          roles: ["admin"]
+          roles: ['admin']
         }
       }
     ]

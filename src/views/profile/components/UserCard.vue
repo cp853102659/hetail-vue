@@ -1,12 +1,12 @@
 <template>
   <el-card style="margin-bottom:20px;">
     <div slot="header" class="clearfix">
-      <span>About me</span>
+      <span>我的信息</span>
     </div>
 
     <div class="user-profile">
       <div class="box-center">
-        <pan-thumb :image="user.avatar" :height="'100px'" :width="'100px'" :hoverable="false">
+        <pan-thumb image="./../../assets/user/user.jpg" :height="'100px'" :width="'100px'" :hoverable="false">
           <div>Hello</div>
           {{ user.role }}
         </pan-thumb>
@@ -19,34 +19,9 @@
 
     <div class="user-bio">
       <div class="user-education user-bio-section">
-        <div class="user-bio-section-header"><svg-icon icon-class="education" /><span>Education</span></div>
-        <div class="user-bio-section-body">
-          <div class="text-muted">
-            JS in Computer Science from the University of Technology
-          </div>
-        </div>
-      </div>
-
-      <div class="user-skills user-bio-section">
-        <div class="user-bio-section-header"><svg-icon icon-class="skill" /><span>Skills</span></div>
-        <div class="user-bio-section-body">
-          <div class="progress-item">
-            <span>Vue</span>
-            <el-progress :percentage="70" />
-          </div>
-          <div class="progress-item">
-            <span>JavaScript</span>
-            <el-progress :percentage="18" />
-          </div>
-          <div class="progress-item">
-            <span>Css</span>
-            <el-progress :percentage="12" />
-          </div>
-          <div class="progress-item">
-            <span>ESLint</span>
-            <el-progress :percentage="100" status="success" />
-          </div>
-        </div>
+        <div class="user-bio-section-header"><svg-icon icon-class="mail" /><span>邮箱：</span>{{ user.email }}</div>
+        <div class="user-bio-section-header"><svg-icon icon-class="mobile" /><span>手机：</span>{{ user.phone }}</div>
+        <div class="user-bio-section-header"><svg-icon icon-class="home" /><span>部门：</span>{{ user.department }}</div>
       </div>
     </div>
   </el-card>
@@ -65,7 +40,11 @@ export default {
           name: '',
           email: '',
           avatar: '',
-          roles: ''
+          roles: '',
+          nickName: '',
+          phone: '',
+          lastLoginDate: '',
+          department: ''
         }
       }
     }

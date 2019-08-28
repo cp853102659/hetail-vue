@@ -12,8 +12,12 @@ const users = {
   'admin-token': {
     roles: ['admin'],
     introduction: 'I am a super administrator',
-    avatar: '',
-    name: 'Super Admin'
+    avatar: './../../assets/user/user.jpg',
+    email: '853102659@qq.com',
+    name: '超级管理员',
+    phone: '13057571569',
+    nickName: '张三丰',
+    department: '开发部'
   },
   'editor-token': {
     roles: ['editor'],

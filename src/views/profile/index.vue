@@ -10,13 +10,13 @@
         <el-col :span="18" :xs="24">
           <el-card>
             <el-tabs v-model="activeTab">
-              <el-tab-pane label="Activity" name="activity">
+              <el-tab-pane label="动态" name="activity">
                 <activity />
               </el-tab-pane>
-              <el-tab-pane label="Timeline" name="timeline">
+              <el-tab-pane label="时间轴" name="timeline">
                 <timeline />
               </el-tab-pane>
-              <el-tab-pane label="Account" name="account">
+              <el-tab-pane label="资料修改" name="account">
                 <account :user="user" />
               </el-tab-pane>
             </el-tabs>
@@ -48,7 +48,11 @@ export default {
     ...mapGetters([
       'name',
       'avatar',
-      'roles'
+      'roles',
+      'phone',
+      'nickName',
+      'email',
+      'department'
     ])
   },
   created() {
@@ -59,8 +63,11 @@ export default {
       this.user = {
         name: this.name,
         role: this.roles.join(' | '),
-        email: 'admin@test.com',
-        avatar: this.avatar
+        email: this.email,
+        avatar: this.avatar,
+        nickName: this.nickName,
+        phone: this.phone,
+        department: this.department
       }
     }
   }
