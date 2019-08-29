@@ -169,7 +169,7 @@ export const asyncRoutes = [
     children: [
       {
         path: 'user',
-        component: () => import('@/views/charts/keyboard'),
+        component: () => import('@/views/organization/user/index'),
         name: 'user',
         meta: { title: '用户管理', noCache: true }
       },

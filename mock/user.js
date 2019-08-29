@@ -19,7 +19,7 @@ const users = {
     qq: '853102659',
     department: '开发部',
     job: '高级软件工程师',
-    loginDate: '2019年08月29日 11:54:30',
+    loginDate: '2019/08/29 11:54:30',
     roles: ['admin']
   },
   'editor-token': {

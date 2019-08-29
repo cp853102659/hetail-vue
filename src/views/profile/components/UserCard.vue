@@ -26,7 +26,7 @@
         <div class="user-bio-section-header"><svg-icon icon-class="skill" /><span>职位：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>{{ user.job }}</div>
       </div>
     </div>
-    <p>最近登录时间：{{ user.loginDate }}</p>
+    <p>最近登录：{{ user.loginDate }}</p>
   </el-card>
 </template>
 
