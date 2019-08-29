@@ -5,33 +5,25 @@
     <breadcrumb id="breadcrumb-container" class="breadcrumb-container" />
 
     <div class="right-menu">
+
       <template v-if="device!=='mobile'">
 
-        <el-tooltip content="搜索" effect="dark" placement="bottom">
-          <search id="header-search" class="right-menu-item" />
-        </el-tooltip>
+        <search id="header-search" class="right-menu-item" />
 
         <error-log class="errLog-container right-menu-item hover-effect" />
 
-        <el-tooltip content="放大缩小" effect="dark" placement="bottom">
-          <screenfull id="screenfull" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        <screenfull id="screenfull" class="right-menu-item hover-effect" />
 
-        <el-tooltip content="字体" effect="dark" placement="bottom">
-          <size-select id="size-select" class="right-menu-item hover-effect" />
-        </el-tooltip>
+        <size-select id="size-select" class="right-menu-item hover-effect" />
 
       </template>
 
       <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
         <div class="avatar-wrapper">
-          <img src="./../../assets/user/user.jpg" class="user-avatar">
+          <img :src="userImage" class="user-avatar">
           <i class="el-icon-caret-bottom" />
         </div>
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/profile/index">
-            <el-dropdown-item>我的信息</el-dropdown-item>
-          </router-link>
           <router-link to="/">
             <el-dropdown-item>首页</el-dropdown-item>
           </router-link>
@@ -40,6 +32,7 @@
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+
     </div>
   </div>
 </template>
@@ -52,6 +45,7 @@ import ErrorLog from '@/components/ErrorLog'
 import Screenfull from '@/components/Screenfull'
 import SizeSelect from '@/components/SizeSelect'
 import Search from '@/components/HeaderSearch'
+import userImage from '@/assets/user/user.jpg'
 
 export default {
   components: {
@@ -62,10 +56,16 @@ export default {
     SizeSelect,
     Search
   },
+  data() {
+    return {
+      dialogVisible: false,
+      userImage: userImage,
+      input: ''
+    }
+  },
   computed: {
     ...mapGetters([
       'sidebar',
-      'avatar',
       'device'
     ])
   },

@@ -10,14 +10,17 @@ const tokens = {
 
 const users = {
   'admin-token': {
-    roles: ['admin'],
-    introduction: 'I am a super administrator',
-    avatar: './../../assets/user/user.jpg',
-    email: '853102659@qq.com',
-    name: '超级管理员',
-    phone: '13057571569',
+    userName: '超级管理员',
     nickName: '张三丰',
-    department: '开发部'
+    realName: '李四',
+    sex: '男',
+    email: '853102659@qq.com',
+    phone: '13057571569',
+    qq: '853102659',
+    department: '开发部',
+    job: '高级软件工程师',
+    loginDate: '2019年08月29日 11:54:30',
+    roles: ['admin']
   },
   'editor-token': {
     roles: ['editor'],

@@ -10,13 +10,13 @@
         <el-col :span="18" :xs="24">
           <el-card>
             <el-tabs v-model="activeTab">
-              <el-tab-pane label="动态" name="activity">
-                <activity />
-              </el-tab-pane>
-              <el-tab-pane label="时间轴" name="timeline">
+              <el-tab-pane label="行为轨迹" name="timeline">
                 <timeline />
               </el-tab-pane>
-              <el-tab-pane label="资料修改" name="account">
+              <el-tab-pane label="密码修改" name="password">
+                <password />
+              </el-tab-pane>
+              <el-tab-pane label="信息修改" name="account">
                 <account :user="user" />
               </el-tab-pane>
             </el-tabs>
@@ -31,13 +31,13 @@
 <script>
 import { mapGetters } from 'vuex'
 import UserCard from './components/UserCard'
-import Activity from './components/Activity'
+import Password from './components/Password'
 import Timeline from './components/Timeline'
 import Account from './components/Account'
 
 export default {
   name: 'Profile',
-  components: { UserCard, Activity, Timeline, Account },
+  components: { UserCard, Timeline, Account, Password },
   data() {
     return {
       user: {},
@@ -46,13 +46,17 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'name',
-      'avatar',
-      'roles',
-      'phone',
+      'userName',
+      'realName',
       'nickName',
+      'sex',
       'email',
-      'department'
+      'phone',
+      'qq',
+      'department',
+      'job',
+      'loginDate',
+      'roles'
     ])
   },
   created() {
@@ -61,13 +65,17 @@ export default {
   methods: {
     getUser() {
       this.user = {
-        name: this.name,
-        role: this.roles.join(' | '),
-        email: this.email,
-        avatar: this.avatar,
+        userName: this.userName,
+        realName: this.realName,
         nickName: this.nickName,
+        sex: this.sex,
+        email: this.email,
         phone: this.phone,
-        department: this.department
+        qq: this.qq,
+        department: this.department,
+        job: this.job,
+        loginDate: this.loginDate,
+        roles: this.roles.join('|')
       }
     }
   }

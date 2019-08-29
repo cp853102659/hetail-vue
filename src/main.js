@@ -28,6 +28,12 @@ import * as filters from './filters' // global filters
  * please remove it before going online! ! !
  */
 import { mockXHR } from '../mock'
+
+import layer from 'vue-layer'
+import 'vue-layer/lib/vue-layer.css'
+
+Vue.prototype.$layer = layer(Vue)
+
 if (process.env.NODE_ENV === 'production') {
   mockXHR()
 }

@@ -14,6 +14,8 @@
 </template>
 
 <script>
+import logo from '@/assets/vue.png'
+
 export default {
   name: 'SidebarLogo',
   props: {
@@ -24,7 +26,8 @@ export default {
   },
   data() {
     return {
-      title: 'He Tail Communication'
+      title: 'HeTail Communication',
+      logo: logo
     }
   }
 }
